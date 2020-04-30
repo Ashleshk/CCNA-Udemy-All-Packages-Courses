@@ -1,0 +1,11 @@
+access-list 100 permit tcp host 10.1.2.101 10.1.1.100 0.0.0.1 eq www
+access-list 100 permit tcp host 10.1.2.101 10.1.1.100 0.0.0.1 eq 443
+access-list 100 deny ip 10.1.2.0 0.0.0.255 10.1.1.0 0.0.0.255
+access-list 100 permit ip 10.1.2.0 0.0.0.255 any
+
+
+access-list 101 permit tcp any 10.1.1.0 0.0.0.255 eq www
+access-list 101 permit tcp any 10.1.1.0 0.0.0.255 eq 443
+access-list 101 permit tcp any 10.1.2.0 0.0.0.255 established
+access-list 101 permit udp host 8.8.8.8 eq domain 10.1.2.0 0.0.0.255
+access-list 101 deny ip any 10.1.2.0 0.0.0.255
